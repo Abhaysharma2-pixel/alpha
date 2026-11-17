@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CreatorConnect Marketplace – Config Files</title>
+<style>
+:root{--bg:#f7f7fb;--card:#fff;--text:#1c1b29;--muted:#6b6a80;--line:#e3e2ee;--accent:#7c3aed;--code:#0d1117;--codetext:#e6edf3}
+@media(prefers-color-scheme:dark){:root{--bg:#0f0e17;--card:#181726;--text:#ece9f8;--muted:#9a98b3;--line:#2a2940;--accent:#a78bfa}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{display:grid;grid-template-columns:240px 1fr;gap:24px;max-width:1200px;margin:0 auto;padding:24px 16px}
+aside{position:sticky;top:24px;align-self:start}
+aside h1{font-size:16px;margin:0 0 4px}
+aside p{margin:0 0 16px;color:var(--muted);font-size:13px}
+aside a{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:14px}
+aside a:hover{background:var(--card)}
+aside em{font-style:normal;font-size:11px;color:var(--accent);align-self:center}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:24px;overflow:hidden;scroll-margin-top:16px}
+section header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+h2{margin:0;font-size:16px;font-family:ui-monospace,Menlo,Consolas,monospace}
+header p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.copy{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer}
+.copy:hover{opacity:.9}
+pre{margin:0;padding:18px;background:var(--code);color:var(--codetext);overflow:auto;max-height:560px;font:13px/1.55 ui-monospace,Menlo,Consolas,monospace;tab-size:2}
+@media(max-width:760px){.wrap{grid-template-columns:1fr}aside{position:static}}
+</style></head>
+<body><div class="wrap">
+<aside><h1>creatorconnect-marketplace</h1><p>Project configuration files</p>
+<a href="#f0"><span>package.json</span><em>JSON</em></a><a href="#f1"><span>next.config.js</span><em>JS</em></a><a href="#f2"><span>tailwind.config.js</span><em>JS</em></a><a href="#f3"><span>tsconfig.json</span><em>JSON</em></a><a href="#f4"><span>turbo.json</span><em>JSON</em></a><a href="#f5"><span>schema.prisma</span><em>Prisma</em></a></aside>
+<main>
+<section id="f0">
+<header><div><h2>package.json</h2><p>Dependencies and npm scripts · 44 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>{
+  &quot;name&quot;: &quot;creatorconnect-marketplace&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;private&quot;: true,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;next dev&quot;,
+    &quot;build&quot;: &quot;next build&quot;,
+    &quot;start&quot;: &quot;next start&quot;,
+    &quot;db:migrate&quot;: &quot;prisma migrate dev&quot;,
+    &quot;db:seed&quot;: &quot;ts-node prisma/seed.ts&quot;,
+    &quot;db:push&quot;: &quot;prisma db push&quot;,
+    &quot;format&quot;: &quot;prettier --write .&quot;,
+    &quot;lint&quot;: &quot;next lint&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;@prisma/client&quot;: &quot;^5.0.0&quot;,
+    &quot;next&quot;: &quot;14.0.0&quot;,
+    &quot;react&quot;: &quot;18.2.0&quot;,
+    &quot;react-dom&quot;: &quot;18.2.0&quot;,
+    &quot;tailwindcss&quot;: &quot;^3.3.0&quot;,
+    &quot;next-auth&quot;: &quot;^4.22.0&quot;,
+    &quot;bcryptjs&quot;: &quot;^2.4.3&quot;,
+    &quot;jsonwebtoken&quot;: &quot;^9.0.0&quot;,
+    &quot;nodemailer&quot;: &quot;^6.8.0&quot;,
+    &quot;stripe&quot;: &quot;^11.0.0&quot;,
+    &quot;cloudinary&quot;: &quot;^1.4.0&quot;,
+    &quot;uuid&quot;: &quot;^9.0.0&quot;,
+    &quot;razorpay&quot;: &quot;^2.7.0&quot;,
+    &quot;pdfkit&quot;: &quot;^0.13.0&quot;,
+    &quot;multer&quot;: &quot;^1.4.5&quot;,
+    &quot;multer-storage-cloudinary&quot;: &quot;^4.0.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@types/bcryptjs&quot;: &quot;^2.4.2&quot;,
+    &quot;@types/jsonwebtoken&quot;: &quot;^9.0.0&quot;,
+    &quot;@types/node&quot;: &quot;20.0.0&quot;,
+    &quot;prisma&quot;: &quot;^5.0.0&quot;,
+    &quot;typescript&quot;: &quot;^5.0.0&quot;,
+    &quot;ts-node&quot;: &quot;^10.9.0&quot;,
+    &quot;prettier&quot;: &quot;^3.0.0&quot;,
+    &quot;eslint&quot;: &quot;^8.45.0&quot;,
+    &quot;eslint-config-next&quot;: &quot;14.0.0&quot;
+  }
+}</code></pre>
+</section><section id="f1">
+<header><div><h2>next.config.js</h2><p>Next.js configuration · 17 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>{
+  &quot;reactStrictMode&quot;: true,
+  &quot;swcMinify&quot;: true,
+  &quot;images&quot;: {
+    &quot;domains&quot;: [&quot;res.cloudinary.com&quot;, &quot;lh3.googleusercontent.com&quot;]
+  },
+  &quot;env&quot;: {
+    &quot;NEXT_PUBLIC_APP_URL&quot;: &quot;process.env.NEXT_PUBLIC_APP_URL || &#x27;http://localhost:3000&#x27;&quot;
+  },
+  &quot;async redirects()&quot;: [
+    {
+      &quot;source&quot;: &quot;/admin&quot;,
+      &quot;destination&quot;: &quot;/admin/dashboard&quot;,
+      &quot;permanent&quot;: true
+    }
+  ]
+}</code></pre>
+</section><section id="f2">
+<header><div><h2>tailwind.config.js</h2><p>Tailwind theme and content paths · 42 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>{
+  &quot;content&quot;: [
+    &quot;./pages/**/*.{js,ts,jsx,tsx,mdx}&quot;,
+    &quot;./components/**/*.{js,ts,jsx,tsx,mdx}&quot;,
+    &quot;./app/**/*.{js,ts,jsx,tsx,mdx}&quot;
+  ],
+  &quot;theme&quot;: {
+    &quot;extend&quot;: {
+      &quot;colors&quot;: {
+        &quot;navy&quot;: {
+          &quot;50&quot;: &quot;#f8f9fa&quot;,
+          &quot;100&quot;: &quot;#e9ecef&quot;,
+          &quot;200&quot;: &quot;#dee2e6&quot;,
+          &quot;300&quot;: &quot;#ced4da&quot;,
+          &quot;400&quot;: &quot;#adb5bd&quot;,
+          &quot;500&quot;: &quot;#6c757d&quot;,
+          &quot;600&quot;: &quot;#495057&quot;,
+          &quot;700&quot;: &quot;#343a40&quot;,
+          &quot;800&quot;: &quot;#212529&quot;,
+          &quot;900&quot;: &quot;#0d1117&quot;
+        },
+        &quot;purple&quot;: {
+          &quot;50&quot;: &quot;#f3e8ff&quot;,
+          &quot;100&quot;: &quot;#ecd5fe&quot;,
+          &quot;200&quot;: &quot;#d8b4fe&quot;,
+          &quot;300&quot;: &quot;#c084fc&quot;,
+          &quot;400&quot;: &quot;#a855f7&quot;,
+          &quot;500&quot;: &quot;#8b5cf6&quot;,
+          &quot;600&quot;: &quot;#7c3aed&quot;,
+          &quot;700&quot;: &quot;#6d28d9&quot;,
+          &quot;800&quot;: &quot;#5b21b6&quot;,
+          &quot;900&quot;: &quot;#4c1d95&quot;
+        }
+      },
+      &quot;fontFamily&quot;: {
+        &quot;sans&quot;: [&quot;Inter&quot;, &quot;sans-serif&quot;],
+        &quot;serif&quot;: [&quot;Merriweather&quot;, &quot;serif&quot;]
+      }
+    }
+  },
+  &quot;plugins&quot;: []
+}</code></pre>
+</section><section id="f3">
+<header><div><h2>tsconfig.json</h2><p>TypeScript compiler options · 34 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es2022&quot;,
+    &quot;lib&quot;: [&quot;dom&quot;, &quot;dom.iterable&quot;, &quot;esscripts&quot;],
+    &quot;allowJs&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;declaration&quot;: true,
+    &quot;declarationMap&quot;: true,
+    &quot;sourceMap&quot;: true,
+    &quot;outDir&quot;: &quot;./dist&quot;,
+    &quot;rootDir&quot;: &quot;.&quot;,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;./*&quot;]
+    }
+  },
+  &quot;include&quot;: [
+    &quot;next-env.d.ts&quot;,
+    &quot;**/*.ts&quot;,
+    &quot;**/*.tsx&quot;
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;
+  ]
+}</code></pre>
+</section><section id="f4">
+<header><div><h2>turbo.json</h2><p>Turborepo pipeline · 21 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>{
+  &quot;$schema&quot;: &quot;https://turbo.build/schema.json&quot;,
+  &quot;pipeline&quot;: {
+    &quot;build&quot;: {
+      &quot;dependsOn&quot;: [&quot;^build&quot;],
+      &quot;outputs&quot;: [&quot;dist/**&quot;, &quot;.next/**&quot;]
+    },
+    &quot;dev&quot;: {
+      &quot;cache&quot;: false
+    },
+    &quot;lint&quot;: {
+      &quot;outputs&quot;: []
+    },
+    &quot;test&quot;: {
+      &quot;dependsOn&quot;: [&quot;build&quot;]
+    },
+    &quot;typecheck&quot;: {
+      &quot;outputs&quot;: []
+    }
+  }
+}</code></pre>
+</section><section id="f5">
+<header><div><h2>schema.prisma</h2><p>Database schema · 520 lines</p></div>
+<button class="copy" type="button">Copy</button></header>
+<pre><code>generator client {
+  provider = &quot;prisma-client-js&quot;
+  previewFeatures = [&quot;referentialActions&quot;]
+}
+
+datasource db {
+  provider = &quot;postgresql&quot;
+  url      = env(&quot;DATABASE_URL&quot;)
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password      String
+  role          Role     @default(CUSTOMER)
+  name          String?
+  profileImage  String?
+  emailVerified Boolean  @default(false)
+  phoneVerified Boolean  @default(false)
+  phone         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  creatorProfile     CreatorProfile?
+  brandProfile       BrandProfile?
+  customerProfile    CustomerProfile?
+  orders             Order[]
+  payments           Payment[]
+}
+
+enum Role {
+  ADMIN
+  BRAND
+  CREATOR
+  CUSTOMER
+}
+
+model CreatorProfile {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id])
+  name               String
+  profileImage       String?
+  instagramHandle    String
+  instagramFollowers Int @default(0)
+  youtubeChannel     String
+  youtubeSubscribers Int @default(0)
+  facebookPage       String
+  facebookFollowers  Int @default(0)
+  niche              String
+  location           String
+  language           String
+  engagementRate     Float    @default(0)
+  avgViews           Int      @default(0)
+  portfolio          String[]
+  commissionRate     Float    @default(10)
+  isVerified         Boolean  @default(false)
+  verificationStatus VerificationStatus @default(PENDING)
+  joinPayment        CreatorJoinPayment?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+enum VerificationStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+}
+
+model BrandProfile {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  companyName   String
+  website       String?
+  logo          String?
+  description   String?
+  isVerified    Boolean  @default(false)
+  commissionRate Float   @default(15)
+  status        BrandStatus @default(PENDING)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum BrandStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+model CreatorJoinPayment {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id])
+  transactionId    String   @unique
+  amount           Float    @default(99)
+  currency         String   @default(&#x27;INR&#x27;)
+  status           PaymentStatus @default(PENDING)
+  paymentMethod    PaymentMethod?
+  createdAt        DateTime @default(now())
+  verifiedAt       DateTime?
+  refundStatus     RefundStatus @default(NOT_REQUESTED)
+  refundReason     String?
+  refundProcessedAt DateTime?
+  adminId          String?
+  admin            Admin?   @relation(fields: [adminId], references: [id])
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  UPI
+  CREDIT_CARD
+  DEBIT_CARD
+  NET_BANKING
+  WALLET
+}
+
+enum RefundStatus {
+  NOT_REQUESTED
+  REQUESTED
+  PROCESSED
+  DENIED
+}
+
+model CustomAdRequest {
+  id                String   @id @default(cuid())
+  requestId         String   @unique @default(() =&gt; &quot;AD-&quot; + toString(datetime(2020, 1, 1).getTime()) + &quot;-&quot; + nanoid(6))
+  brandId           String
+  brand             BrandProfile @relation(fields: [brandId], references: [id])
+  status            AdRequestStatus @default(DRAFT)
+  assignedTo        Admin? @relation(&quot;AssignedRequests&quot;, fields: [assignedToId], references: [id])
+  assignedToId      String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  lastStatusChange  DateTime @default(now())
+  contactName       String
+  contactNumber     String
+  businessEmail     String
+  designation       String
+  companyName       String
+  country           String
+  state             String
+  city              String
+  preferredContact  ContactMethod
+  bestTimeToContact String?
+  campaignName      String
+  objective         CampaignObjective
+  platforms         String[]
+  format            AdFormat[]
+  targetAudience    String
+  targetAgeGroup    String
+  targetGender      Gender?
+  targetLocation    String
+  language          String
+  interests         String
+  startDate         DateTime?
+  endDate           DateTime?
+  creatorsNeeded    Int?
+  additionalReqs    String?
+  totalBudget       Float
+  currency          Currency
+  minBudget         Float?
+  maxBudget         Float?
+  paymentMethod     PaymentMethod?
+  budgetFlexibility BudgetFlexibility
+  expectedResults   String?
+  
+  @@map(&quot;custom_ad_requests&quot;)
+}
+
+enum AdRequestStatus {
+  DRAFT
+  SUBMITTED
+  PENDING_REVIEW
+  UNDER_VERIFICATION
+  APPROVED
+  REJECTED
+  UPDATE_REQUIRED
+  PROPOSAL_SENT
+  AWAITING_BRAND_APPROVAL
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum ContactMethod {
+  PHONE
+  EMAIL
+  WHATSAPP
+}
+
+enum CampaignObjective {
+  INCREASE_SALES
+  BRAND_AWARENESS
+  GENERATE_LEADS
+  INCREASE_TRAFFIC
+  PROMOTE_PRODUCT
+  SOCIAL_ENGAGEMENT
+  OTHER
+}
+
+enum AdFormat {
+  INSTAGRAM_REELS
+  INSTAGRAM_STORIES
+  YOUTUBE_SHORTS
+  YOUTUBE_VIDEOS
+  FACEBOOK_POSTS
+  INFLUENCER_COLLAB
+  PRODUCT_REVIEW
+  CUSTOM_AD
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  ALL
+}
+
+enum Currency {
+  INR
+  USD
+  EUR
+  GBP
+}
+
+enum BudgetFlexibility {
+  FIXED
+  FLEXIBLE
+  PLATFORM_RECOMMEND
+}
+
+model AdRequestProduct {
+  id              String   @id @default(cuid())
+  requestId       String
+  request         CustomAdRequest @relation(fields: [requestId], references: [id])
+  productName     String
+  category        String
+  description     String?
+  price           Float?
+  discount        String?
+  purchaseLink    String?
+  isTargetProduct Boolean @default(true)
+  createdAt       DateTime @default(now())
+}
+
+model AdRequestFile {
+  id             String  @id @default(cuid())
+  requestId      String
+  request        CustomAdRequest @relation(fields: [requestId], references: [id])
+  fileName       String
+  fileUrl        String
+  fileSize       Int
+  fileType       String
+  uploadedAt     DateTime @default(now())
+}
+
+model AdProposal {
+  id               String   @id @default(cuid())
+  requestId          String
+  request            CustomAdRequest @relation(fields: [requestId], references: [id])
+  proposedBy         String
+  proposedByName     String
+  budget             Float
+  platformFee        Float
+  creatorCommissions Float
+  status             ProposalStatus @default(SENT)
+  createdAt          DateTime @default(now())
+  acceptedAt        DateTime?
+}
+
+enum ProposalStatus {
+  SENT
+  ACCEPTED
+  DECLINED
+  REVOKED
+}
+
+model CommunicationThread {
+  id               String   @id @default(cuid())
+  requestId        String
+  request          CustomAdRequest @relation(fields: [requestId], references: [id])
+  subject          String
+  status           ThreadStatus @default(ACTIVE)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  lastMessageAt    DateTime @default(now())
+  brandId          String
+  brand            BrandProfile @relation(fields: [brandId], references: [id])
+  adminId          String?
+  admin            Admin?   @relation(fields: [adminId], references: [id])
+  messages         ThreadMessage[]
+}
+
+enum ThreadStatus {
+  ACTIVE
+  CLOSED
+  ARCHIVED
+}
+
+model ThreadMessage {
+  id             String   @id @default(cuid())
+  threadId       String
+  thread         CommunicationThread @relation(fields: [threadId], references: [id])
+  senderType     MessageSender
+  message        String
+  attachments    ThreadAttachment[]
+  readBy         ThreadReadReceipt[]
+  sentAt         DateTime @default(now())
+  isSystemMessage Boolean  @default(false)
+}
+
+enum MessageSender {
+  BRAND
+  ADMIN
+}
+
+model ThreadAttachment {
+  id         String   @id @default(cuid())
+  messageId  String
+  message    ThreadMessage @relation(fields: [messageId], references: [id])
+  fileName   String
+  fileUrl    String
+  fileSize   Int
+  fileType   String
+  uploadedAt DateTime @default(now())
+}
+
+model ThreadReadReceipt {
+  id          String   @id @default(cuid())
+  messageId   String
+  message     ThreadMessage @relation(fields: [messageId], references: [id])
+  senderType  MessageSender
+  readAt      DateTime @default(now())
+  
+  @@unique([messageId, senderType])
+}
+
+model Admin {
+  id                 String  @id @default(cuid())
+  userId             String  @unique
+  user               User    @relation(fields: [userId], references: [id])
+  role               AdminRole @default(SUPPORT)
+  department         String?
+  assignedRequests   CustomAdRequest[] @relation(&quot;AssignedRequests&quot;)
+  communications     CommunicationThread[]
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  BRAND_MANAGER
+  SUPPORT
+  FINANCE
+}
+
+model Product {
+  id             String   @id @default(cuid())
+  name           String
+  description    String
+  price          Float
+  compareAtPrice Float?
+  sku            String?
+  images         String[]
+  videoUrl       String?
+  brandId        String
+  brand          BrandProfile @relation(fields: [brandId], references: [id])
+  commissionRate Float   @default(10)
+  isActive       Boolean  @default(true)
+  category       String?
+  tags           String[]
+  stockQuantity  Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Order {
+  id               String   @id @default(cuid())
+  orderNumber      String   @unique
+  customerId       String
+  customer         CustomerProfile @relation(fields: [customerId], references: [id])
+  status           OrderStatus @default(PENDING)
+  totalAmount      Float
+  discountAmount   Float @default(0)
+  taxAmount        Float @default(0)
+  shippingAddress  Address @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId String
+  paymentId        String?
+  payment          Payment? @relation(fields: [paymentId], references: [id])
+  items            OrderItem[]
+  commissionDue    Float @default(0)
+  commissionPaid   Float @default(0)
+  refundReason     String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  deliveredAt      DateTime?
+  returnedAt       DateTime?
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+model OrderItem {
+  id              String   @id @default(cuid())
+  orderId         String
+  order           Order @relation(fields: [orderId], references: [id])
+  productId       String
+  product         Product @relation(fields: [productId], references: [id])
+  quantity        Int
+  price           Float
+  commissionRate Float @default(10)
+  commissionDue  Float @default(0)
+  commissionPaid Float @default(0)
+}
+
+model Commission {
+  id              String   @id @default(cuid())
+  creatorId       String
+  creator         CreatorProfile @relation(fields: [creatorId], references: [id])
+  orderId         String
+  order           Order @relation(fields: [orderId], references: [id])
+  amount          Float
+  status          CommissionStatus @default(PENDING)
+  processedAt     DateTime?
+  paidAt          DateTime?
+  paymentId       String?
+  payment         Payment? @relation(fields: [paymentId], references: [id])
+  createdAt       DateTime @default(now())
+}
+
+enum CommissionStatus {
+  PENDING
+  APPROVED
+  PAID
+  CANCELLED
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User @relation(fields: [userId], references: [id])
+  amount        Float
+  type          PaymentType
+  status        PaymentStatus @default(PENDING)
+  transactionId String?
+  method        PaymentMethod
+  platformFee   Float @default(0)
+  notes         String?
+  createdAt     DateTime @default(now())
+  processedAt   DateTime?
+}
+
+enum PaymentType {
+  INCOME
+  PAYOUT
+  REFUND
+  PLATFORM_FEE
+}
+
+model CustomerProfile {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  user       User @relation(fields: [userId], references: [id])
+  firstName  String?
+  lastName   String?
+  phone      String?
+}
+
+model Address {
+  id           String   @id @default(cuid())
+  customerId   String
+  customer     CustomerProfile @relation(fields: [customerId], references: [id])
+  name         String
+  address1     String
+  address2     String?
+  city         String
+  state        String
+  postalCode   String
+  country      String
+  phone        String?
+  isDefault    Boolean @default(false)
+  createdAt    DateTime @default(now())
+}
+
+model Offer {
+  id              String   @id @default(cuid())
+  title           String
+  description     String?
+  productIds      String[]
+  creatorIds      String[]
+  discountType    DiscountType
+  discountValue   Float
+  code            String @unique
+  startDate       DateTime
+  endDate         DateTime
+  usageLimit      Int?
+  usedCount       Int @default(0)
+  isActive        Boolean @default(true)
+  createdAt       DateTime @default(now())
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED
+  FREE_SHIPPING
+}</code></pre>
+</section>
+</main></div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('section').querySelector('code').textContent;
+    function done(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){})}
+  });
+});
+</script>
+</body></html>
